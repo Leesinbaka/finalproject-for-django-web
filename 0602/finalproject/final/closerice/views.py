@@ -3,6 +3,7 @@ from django.contrib import auth
 from .models import restaurant
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate
+from django.core.files.storage import FileSystemStorage
 def login(request):
     if request.method =='POST':
         name = request.POST['username']
@@ -46,3 +47,17 @@ def taipei_1(request):
 def haha(request):
     rest = restaurant.objects.all()
     return render(request,"haha.html",{"rest":rest})
+
+def hahaeditpage(request):
+    if request.method=='POST':
+        res = restaurant()
+        res.name = request.POST.get('name')
+        res.content = request.POST.get('content')
+        res.image = request.FILES['picture']
+        # myfile = request.FILES['myfile']
+        res.address = request.POST.get('address')
+        res.price = request.POST.get('price')
+        res.worktime = request.POST.get('worktime')
+        res.save()
+        return redirect('/closerice/haha/')
+    return render(request,'hahaeditpage.html')

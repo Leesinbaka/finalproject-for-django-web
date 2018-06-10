@@ -6,7 +6,7 @@
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 <meta charset="utf-8" />
-<title>公館 GongGuan</title>
+<title>新增餐廳_(:3</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="{% static 'assets/css/fonts.css' %}" />
 <link rel="stylesheet" href="{% static 'assets/css/default.css' %}" />
@@ -16,10 +16,9 @@
 <div id="header-wrapper">
 	<div id="header" class="container">
 		<div id="logo">
-			<h1><a name='top'>公館 GongGuan</a></h1>
+			<h1><a name='top'>新增餐廳</a></h1>
 			<h  color="blue"><a href="/closerice/index/"><u>回目錄</u></a></h>
 			<h  color="blue"><a href="/closerice/taipei_1/"><u>回台北目錄</u></a></h>
-			<a href="/closerice/hahaeditpage/"><u>新增我最愛的餐廳</u></a>
 		</div>
 		<div id="menu">
 			<ul>
@@ -35,20 +34,19 @@
 		</div>
 	</div>
 	<div id="page" class="container">
-			{% for list in rest %}
-			<div class="title">
-				<h2>{{list.name}}</h2>
-			</div>
+			
 		<div id="haha">
-			<tr>
-				<td><img src="{{list.image.url}}"></td>
-				<td><h3>簡介:</h3><p>{{list.content}}</p></td>
-				<td><h3>地點:</h3><p>{{list.address}}</p></td>
-				<td><h3>大約價格:</h3><p>{{list.price}}</p></td>
-				<td><h3>營業時間:</h3><p>{{list.worktime}}</p></td>
-			</tr>
-			<br><br>
-			{% endfor %}
+			<form action="" method="POST" enctype="multipart/form-data">
+					{% csrf_token %}
+				餐廳名稱:<input type="text" name="name" style="width:750px;height:25px"><br>
+				簡介:<br><textarea name="content" style="width:450px;height:250px"></textarea><br>
+				圖XD:<input type="file" name="picture" id="picture" placeholder="Image" required><br>
+				地址:<br><input type="text" name="address" style="width:750px;height:25px"><br>
+				大約價格:<input type="text" name="price" style="width:750px;height:25px"><br>
+				營業時間:<input type="text" name="worktime"style="width:750px;height:25px"><br><br>
+				<input type="submit" value="submit">
+			</form>
+			</div>
 
 </body>
 {% else %}

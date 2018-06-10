@@ -6,7 +6,7 @@ class restaurant(models.Model):
     address = models.CharField(max_length=100,blank=True)
     price = models.CharField(max_length=100,blank=True)
     worktime = models.CharField(max_length=100,blank=True)
-    image = models.ImageField(upload_to='imageforrestaurant',blank=True)
+    image = models.ImageField(upload_to='imageforrestaurant')
 
     def __str__(self):
         return self.name
